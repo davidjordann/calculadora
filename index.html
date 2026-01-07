@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora Pro - Versión Educativa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">🧮</div>
+        <div>
+          <h1>Calculadora</h1>
+          <p>Sumar, restar, multiplicar y dividir.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="card calc">
+      <div class="calcTop">
+        <div class="screen" aria-label="Pantalla de la calculadora">
+          <div id="calcExpr" class="expr">0</div>
+          <div id="calcResult" class="result">0</div>
+        </div>
+
+        <div class="toggles">
+          <label class="toggle">
+            <input id="soundToggle" type="checkbox" checked />
+            <span>Sonidos</span>
+          </label>
+          <button id="btnClearHist" class="btn ghost">Borrar historial</button>
+        </div>
+      </div>
+
+      <div class="keys" role="group" aria-label="Teclado de la calculadora">
+        <button class="key fun" data-key="C">C</button>
+        <button class="key fun" data-key="⌫">⌫</button>
+        <button class="key op" data-key="%">%</button>
+        <button class="key op" data-key="/">÷</button>
+
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key op" data-key="*">×</button>
+
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key op" data-key="-">−</button>
+
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key op" data-key="+">+</button>
+
+        <button class="key wide" data-key="0">0</button>
+        <button class="key" data-key=".">.</button>
+        <button class="key eq" data-key="=">=</button>
+      </div>
+
+      <div class="hist">
+        <h2>Historial de operaciones</h2>
+        <ul id="historyList" class="histList"></ul>
+      </div>
+
+      <div class="bottomAction">
+        <button id="btnOtherVersion" class="btn primary big">Acceder a herramientas avanzadas</button>
+      </div>
+    </section>
+
+    <section id="otherPanel" class="card hidden">
+      <div class="vaultHead">
+        <div>
+          <h2>Calculadora</h2>
+          <p class="muted">funciones.</p>
+        </div>
+        <button id="btnClosePanel" class="btn ghost">Cerrar</button>
+      </div>
+
+      <div class="keyPadWrap">
+        <label class="field">
+          <span>calcular</span>
+          <input id="secretKey" class="input" type="text" placeholder="••••••" autocomplete="off" />
+        </label>
+
+        <div class="row">
+          <button id="btnValidate" class="btn primary">calcular</button>
+          <button id="btnKeyBack" class="btn">⌫ Borrar</button>
+          <button id="btnKeyClear" class="btn ghost">Limpiar</button>
+        </div>
+
+        <div class="numpad" aria-label="Teclado de seguridad">
+          <button class="keypadKey" data-k="1">1</button>
+          <button class="keypadKey" data-k="2">2</button>
+          <button class="keypadKey" data-k="3">3</button>
+          <button class="keypadKey" data-k="@">@</button>
+
+          <button class="keypadKey" data-k="4">4</button>
+          <button class="keypadKey" data-k="5">5</button>
+          <button class="keypadKey" data-k="6">6</button>
+          <button class="keypadKey" data-k="!">!</button>
+
+          <button class="keypadKey" data-k="7">7</button>
+          <button class="keypadKey" data-k="8">8</button>
+          <button class="keypadKey" data-k="9">9</button>
+          <button class="keypadKey" data-k="#">#</button>
+
+          <button class="keypadKey wide" data-k="0">0</button>
+          <button class="keypadKey" data-k="-">-</button>
+          <button class="keypadKey" data-k="_">_</button>
+        </div>
+
+        <div id="vaultStatus" class="status locked">suma</div>
+      </div>
+
+      <div id="vault" class="hidden">
+        <hr style="opacity:0.1; margin: 20px 0;">
+        
+        <div class="grid2">
+          <div class="panel">
+            <h3>Texto Original</h3>
+            <label class="field">
+              <textarea id="inputText" rows="6" placeholder="Escribe el mensaje aquí..."></textarea>
+            </label>
+
+            <div class="row">
+              <button id="btnEncode" class="btn primary">Codificar</button>
+              <button id="btnDecode" class="btn">Decodificar</button>
+              <button id="btnSwap" class="btn ghost" title="Intercambiar">⇄</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Resultado Procesado</h3>
+            <label class="field">
+              <textarea id="outputText" rows="6" placeholder="El resultado aparecerá aquí..." readonly></textarea>
+            </label>
+
+            <div class="row">
+              <button id="btnCopy" class="btn">Copiar</button>
+              <button id="btnClear" class="btn ghost">Limpiar todo</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="rules">
+          <summary><strong>Ver mapa de caracteres</strong></summary>
+          <div id="mapPreview" class="mono"></div>
+        </details>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span class="muted small">© 2026 Herramienta de Aprendizaje Local</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
